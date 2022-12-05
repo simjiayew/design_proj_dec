@@ -32,7 +32,11 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": []
+            "scripts": ["src/app/doorbell/js/nand.js", 
+            "src/app/doorbell/js/recorder.js", 
+            "src/app/doorbell/js/app.js"]
+
+
           },
           "configurations": {
             "production": {
@@ -112,7 +116,10 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": []
+            "scripts": 
+            ["src/app/doorbell/js/nand.js", 
+            "src/app/doorbell/js/recorder.js", 
+            "src/app/doorbell/js/app.js"]
           },
           "configurations": {
             "ci": {
@@ -136,7 +143,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": false
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

@@ -1,25 +1,221 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Inbox
-    </ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+   <!-- <ion-button fill="clear" slot="start" color="light">
+     <ion-icon slot="icon-only" name="menu"></ion-icon>
+   </ion-button> -->
+    <ion-avatar slot="end">
+      <img src="assets/icons/dp1.jpg" />
+    </ion-avatar>
+  </ion-item>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">
-        Inbox
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
-  </ion-list>
-</ion-content>
+
+<ion-content [fullscreen]="true" color="light">
+
+  <div class="main-header"></div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label>
+          <ion-note color="light" class="ion-margin-start">
+            Welcome To
+          </ion-note>
+          <p>
+            <ion-chip color="light">
+              <ion-label class="ion-text-wrap">
+                Sim Family Home
+              </ion-label>
+            </ion-chip>
+          </p>
+        </ion-label>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row class="ion-margin-horizontal ion-margin-top">
+      <ion-col>
+        <!-- <ion-label color="light">
+          <b>Please select any options below to begin</b>
+        </ion-label> -->
+        <ion-card-title color="light" style="font-size: 130%;padding-bottom: 10%;" >Please select any options below</ion-card-title>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-margin-horizontal">
+      <ion-col *ngFor="let item of features" size="6">
+        
+        <ion-card (click)="setOpen(true, item.name)" class="ion-text-center">
+          <ion-card-header>
+            <div align="center">
+              <ion-thumbnail [style.background]="item?.background">
+                <img [src]="item?.src" />
+              </ion-thumbnail>
+            </div>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-label color="dark">{{ item?.name }}</ion-label>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+    <!--...................................................................................................................................................................................-->
+    <ion-modal [isOpen]="isModalOpen1">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Door Bell</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false,'Door Bell');">Close</ion-button>
+              
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding">
+          <p>
+            <ion-button id="ring-again" expand="block">Ring Again</ion-button>
+            <ion-button id="Leave-Voice-Mail" expand="block">Leave Voice Mail</ion-button>
+          </p>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+<!--...................................................................................................................................................................................-->
+    <ion-modal [isOpen]="isModalOpen2">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Unlock Preferences</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false, 'Unlock')">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+
+        <ion-content class="ion-padding">
+<!--...................................................................................................................................................................................--> 
+          <p>
+            <ion-button id="face-identification" expand="block">Face ID</ion-button>
+            
+            <ion-button id="Thumbprint" expand="block">Thumbprint</ion-button>
+
+            <ion-button id="6digitpin" expand="block">6-digit PIN</ion-button>
+            <ion-modal trigger="6digitpin">
+              <ng-template>
+                <ion-header>
+                  <ion-toolbar>
+                    <ion-buttons slot="start">
+                      <ion-button (click)="setOpen(false, 'Unlock')">Close</ion-button>
+                    </ion-buttons>
+                    <ion-title>Welcome</ion-title>
+
+                  </ion-toolbar>
+                </ion-header>
+                <ion-content class="ion-padding">
+                  <ion-item>
+                    <ion-label position="stacked">Enter your password</ion-label>
+                    <!-- <ion-input type="password" placeholder="Pin" [(ngModel)]="sixdigitpin"></ion-input> -->
+                  </ion-item>
+                  <!-- <ion-button (click)="confirm()">Confirm</ion-button> -->
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+          </p>
+<!--...................................................................................................................................................................................--> 
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+
+    <ion-modal [isOpen]="isModalOpen3" #modal trigger="open-modal">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Contact List</ion-title>
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false, 'Contact Us')">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content class="contactcss">
+
+          <ion-content>
+            <ion-list>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <ion-img src="assets/icons/fam1.png"></ion-img>
+                </ion-avatar>
+                <ion-label>
+                  <h2>Connor Smith</h2>
+                  <p>Sales Rep</p>
+                </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <ion-img src="assets/icons/fam2.jpg"></ion-img>
+                </ion-avatar>
+                <ion-label>
+                  <h2>Daniel Smith</h2>
+                  <p>Product Designer</p>
+                </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <ion-img src="assets/icons/fam3.png"></ion-img>
+                </ion-avatar>
+                <ion-label>
+                  <h2>Greg Smith</h2>
+                  <p>Director of Operations</p>
+                </ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <ion-img src="assets/icons/fam4.png"></ion-img>
+                </ion-avatar>
+                <ion-label>
+                  <h2>Zoey Smith</h2>
+                  <p>CEO</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-content>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+<!--...................................................................................................................................................................................-->
+    <ion-modal [isOpen]="isModalOpen4">
+      <ng-template>
+        <ion-header>
+          <ion-toolbar>
+            <ion-title>Parcel No.</ion-title>
+
+            <ion-buttons slot="end">
+              <ion-button (click)="setOpen(false, 'Delivery')">Close</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <p style="margin-top: 31%; padding: 9%;">
+            <ion-label style="font-size: 2em;" position="stacked">Please enter Delivery Company and the Parcel Delivery Number below</ion-label>
+            <!-- <ion-input type="text" placeholder="Delivery Company" [(ngModel)]="Delivery_Company"></ion-input>
+            <ion-input type="text" placeholder="Parcel Delivery Number" [(ngModel)]="Parcel_Delivery_Number"></ion-input> -->
+            <ion-button>Submit</ion-button>
+          </p>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+<!--...................................................................................................................................................................................-->
+   <!-- <div id="controls">
+    <button id="recordButton">Record</button>
+    <button id="pauseButton" disabled>Pause</button>
+    <button id="stopButton" disabled>Stop</button>
+   </div>
+   <div id="formats">Format: start recording to see sample rate</div>
+   <p><strong>Recordings:</strong></p>
+   <ol id="recordingsList"></ol> -->
+   <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+   <!-- <script src="js/recorder.js"></script>
+   <script src="js/app.js"></script> -->
+
+
+  </ion-grid>
+

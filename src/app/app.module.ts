@@ -6,6 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+// import { CallNumber } from "@ionic-native/call-number/ngx";
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,4 +15,4 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
