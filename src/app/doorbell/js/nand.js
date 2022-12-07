@@ -197,11 +197,22 @@ function ringcheck() {
   let y = document.getElementById["ringbell"];
   console.log("y");
   bot.sendMessage("y");
+  // bot.sendFile("asd")
   if (y == "") {
     alert("Name must be filled out");
     return false;
   }
 }
+
+// function ringcheck() {
+//   let y = document.getElementById["ringbell"];
+//   console.log("y");
+//   bot.sendMessage("y");
+//   if (y == "") {
+//     alert("Name must be filled out");
+//     return false;
+//   }
+// }
 
 console.log("testing");
 
@@ -215,6 +226,7 @@ function validateForm() {
     console.log(res);
   })
 }
+bot.sendFile("BQACAgUAAxkDAAPYY47sRnexhSwjuuynKekSSW1QdP0AApEHAAL4EXhUcwdVaZIkPKMrBA");
 
 // --------------------------------------------  Voice Record -------------------------------------------- //
 

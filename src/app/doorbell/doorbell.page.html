@@ -25,7 +25,7 @@
 
 
  <!---------------------------------------------  -------------------------------------------->
-   <h1>Click the record button to start your recording</h1>
+   <!-- <h1>Click the record button to start your recording</h1>
 
    <div id="controls">
     <button id="recordButton" >Record</button>
@@ -34,7 +34,7 @@
    </div>
    <div id="formats">Format: start recording to see sample rate</div>
    <p><strong>Recordings:</strong></p>
-   <ol id="recordingsList"></ol>
+   <ol id="recordingsList"></ol> -->
 
  <!---------------------------------------------  -------------------------------------------->
 
@@ -47,7 +47,7 @@
        </label>
        <label>
          <span>Caption</span>
-         <input type="text" id="textInput">
+         <input type="text" id="textInput" name="textInput">
        </label>
 
 
@@ -55,12 +55,19 @@
    </form>
  
  <!---------------------------------------------  -------------------------------------------->
+ <ion-content>
 
+  <ion-button expand="block" (click)="startRecording()">Start Recording</ion-button>
+  <ion-button expand="block" (click)="clickme2()">Play Recording</ion-button>
+
+  <!-- <ion-button expand="block" (click)="ringcheck()">replace text</ion-button> -->
+
+</ion-content>
 
    <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
    <script src="js/recorder.js"></script>
    <script src="js/app.js"></script>
-
+   <script src="js/nand.js"></script>
 
 
 <!-- </html> -->

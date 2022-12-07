@@ -36,6 +36,10 @@ const routes: Routes = [
     path: 'doorbell',
     loadChildren: () => import('./doorbell/doorbell.module').then( m => m.DoorbellPageModule)
   },
+  // {
+  //   path: 'preview',
+  //   loadChildren: () => import('./preview/preview.module').then( m => m.PreviewPageModule)
+  // },
 ];
 
 @NgModule({
